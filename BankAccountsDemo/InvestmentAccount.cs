@@ -9,7 +9,7 @@ namespace BankAccountsDemo
     // Requirement: Investment Account
     public class InvestmentAccount:IAccount
     {
-        public string? Owner {  get; set; }
+        public string? Owner { get; set; }
         public decimal Balance { get; set; }
 
         // Requirement: Two types of investment accounts - Individual and Corporate
@@ -29,7 +29,7 @@ namespace BankAccountsDemo
                 throw new Exception("Withdrawal limit exceeded for Individual Investment account.");
             }
 
-            if(Balance > amount)
+            if(Balance >= amount)
             {
                 Balance -= amount;
             }
