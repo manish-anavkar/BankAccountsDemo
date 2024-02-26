@@ -31,4 +31,28 @@ namespace SingletonDemo
             return _instance;
         }
     }
+
+    sealed class SingletonDemo
+    {
+        private SingletonDemo() { }
+        private static SingletonDemo _instance;
+        private static readonly object _instanceLock = new object();
+        public int Id { get; private set; } 
+
+        public static SingletonDemo Instance(int id)
+        {
+            if(_instance == null)
+            {
+                lock( _instanceLock)
+                {
+                    if( _instance == null)
+                    {
+                        _instance = new SingletonDemo();
+                    }
+                }
+            }
+
+            return _instance;
+        }
+    }
 }
